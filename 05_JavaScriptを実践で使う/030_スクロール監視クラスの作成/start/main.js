@@ -4,15 +4,26 @@ document.addEventListener('DOMContentLoaded', function () {
     const cb = function (entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const ta = new TextAnimation(entry.target);
+                const ta = new TextAnimation(entry.target);// entry.targetはIntersectionObserverが監視している要素
+                // Intersectionが監視対象とした要素を取得targetに格納される
                 ta.animate();
-                observer.unobserve(entry.target);
+                observer.unobserve(entry.target);// 一度監視したら、監視を解除する
             } else {
+                const ta = new TextAnimation(entry.target);
+                ta.DOM.el.classList.remove('inview');
+                // gsap.to(entry.target, .6, {
+                //     ease: Back.easeOut,
+                //     y: '-50%',
+                //     opacity: 0
+                // });
+                // entry.target.classList.remove('inview');
             }
         });
     };
     const options = {
-        root: null,
+        root: null,// ビューポートを指定
+        // root: document.querySelector('.scroll-container'),// スクロールコンテナを指定
+        // rootMargin: "0px 0px -100% 0px",// ビューポートのマージンを指定
         rootMargin: "0px",
         threshold: 0
     };

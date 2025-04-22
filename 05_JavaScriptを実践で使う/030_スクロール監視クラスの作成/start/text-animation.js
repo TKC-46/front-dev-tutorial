@@ -8,8 +8,8 @@ class TextAnimation {
     }
     _splitText() {
         return this.chars.reduce((acc, curr) => {
-            curr = curr.replace(/\s+/, '&nbsp;');
-            return `${acc}<span class="char">${curr}</span>`;
+            curr = curr.replace(/\s+/, '&nbsp;');// 全角スペースがあったらHTMLの半角スペースに置換する
+            return `${acc}<span class="char">${curr}</span>`;// acc + 文字を一文字ずつ格納したspanタグ＝文字数×spanタグが出来上がり一文字ずつ跳ね上がるアニメーションが作れる
         }, "");
     }
     animate() {
