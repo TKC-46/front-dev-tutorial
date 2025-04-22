@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const ta = new TextAnimation(entry.target);// entry.targetはIntersectionObserverが監視している要素
                 // Intersectionが監視対象とした要素を取得targetに格納される
                 ta.animate();
-                observer.unobserve(entry.target);// 一度監視したら、監視を解除する
+                observer.unobserve(entry.target);
             } else {
                 const ta = new TextAnimation(entry.target);
                 ta.DOM.el.classList.remove('inview');

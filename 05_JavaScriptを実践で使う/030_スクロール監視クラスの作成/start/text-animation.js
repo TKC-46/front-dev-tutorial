@@ -17,9 +17,7 @@ class TextAnimation {
     }
 }
 class TweenTextAnimation extends TextAnimation {
-    constructor(el) {
-        super(el);
-        this.DOM.chars = this.DOM.el.querySelectorAll('.char');
+    
     }
     
     animate() {
