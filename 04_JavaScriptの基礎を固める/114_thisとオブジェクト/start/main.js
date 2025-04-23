@@ -6,7 +6,13 @@ const obj = {
         const fn = function() {
             console.log(this);
         };
-        window.setTimeout(fn);  
+        window.setTimeout(fn);// windowはブラウザが独自に用意したオブジェクト
+    }
+}
+
+const window = {
+    setTimeout: function(fn) {
+        fn();// コールバック関数の中で呼び出されたthisはこのwindowを指す
     }
 }
 
@@ -18,12 +24,19 @@ class MyObj {
 
     printFullName() {
         console.log(this.first_name);
-        const fn = function() {
-            console.log(this);
-        };
-        window.setTimeout(fn)   
+        
+        window.setTimeout(function () {
+            console.log(this);// これはwindowを指す
+        })
     }
 }
+
+const window = {
+    setTimeout: function(fn) {
+        fn();// windowオブジェクトを指す
+    }
+}
+
 
 const obj2 = new MyObj();
 
